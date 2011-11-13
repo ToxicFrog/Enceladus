@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdint.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -7,6 +6,7 @@
 #include <lauxlib.h>
 #include <lualib.h>
 
+#include "ints.h"
 #include "toc.h"
 #include "io.h"
 

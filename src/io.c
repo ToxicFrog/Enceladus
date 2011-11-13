@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+#include "ints.h"
 #include "io.h"
 
 uint8_t * loadslice(FILE * fd, size_t start, size_t len)

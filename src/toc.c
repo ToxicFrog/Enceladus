@@ -7,12 +7,12 @@
 // char[namesize] filename; uint8_t[filesize] data;
 
 #include <stdio.h>
-#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 #include <lua.h>
 #include <lauxlib.h>
 
+#include "ints.h"
 #include "io.h"
 
 const uint32_t MAGIC_NUMBER = 0x454E4345; // 'ENCE'
