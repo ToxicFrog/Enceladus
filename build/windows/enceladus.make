@@ -23,7 +23,7 @@ ifeq ($(config),debug)
   OBJDIR     = obj/Debug
   TARGETDIR  = ../..
   TARGET     = $(TARGETDIR)/enceladus.exe
-  DEFINES   += -D_WIN32
+  DEFINES   += -D_WIN32 -DLUA_WIN
   INCLUDES  += -I../../src -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
@@ -45,7 +45,7 @@ ifeq ($(config),release)
   OBJDIR     = obj/Release
   TARGETDIR  = ../..
   TARGET     = $(TARGETDIR)/enceladus.exe
-  DEFINES   += -D_WIN32
+  DEFINES   += -D_WIN32 -DLUA_WIN
   INCLUDES  += -I../../src -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99

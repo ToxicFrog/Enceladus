@@ -16,16 +16,15 @@ solution "enceladus"
         links "m"
 
         configuration "linux"
-            linkoptions { "-rdynamic" }
             defines { "LUA_USE_LINUX" }
+            linkoptions { "-rdynamic" }
             links { "dl" }
             
         configuration "macosx"
             defines { "LUA_USE_MACOSX" }
         
         configuration "windows"
-            targetextension ".exe"
-            defines "_WIN32"
+            defines { "_WIN32", "LUA_WIN" }
 
         -- if we're using Make, we're probably using gcc or compatible
         -- these do not default to C99 mode

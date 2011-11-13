@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="enceladus"
-	ProjectGUID="{769FF189-EAE3-5BF6-F1E3-882FA0C7F226}"
+	ProjectGUID="{9D1C32DB-4421-A41D-5708-0969752A759B}"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -23,7 +23,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="0"
 				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
-				PreprocessorDefinitions="_WIN32"
+				PreprocessorDefinitions="_WIN32;LUA_WIN"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -65,7 +65,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WIN32"
+				PreprocessorDefinitions="_WIN32;LUA_WIN"
 				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
 			/>
 			<Tool
@@ -95,7 +95,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="3"
 				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
-				PreprocessorDefinitions="_WIN32"
+				PreprocessorDefinitions="_WIN32;LUA_WIN"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="TRUE"
@@ -137,7 +137,7 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_WIN32"
+				PreprocessorDefinitions="_WIN32;LUA_WIN"
 				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
 			/>
 			<Tool
