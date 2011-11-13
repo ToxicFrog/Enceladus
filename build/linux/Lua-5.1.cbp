@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Lua-5.1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="../../libLua-5.1.a" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Debug/Lua-5.1" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DLUA_USE_LINUX" />
+					<Add directory="../../src/lua" />
+				</Compiler>
+				<Linker>
+					<Add option="-rdynamic" />
+					<Add library="dl" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="../../libLua-5.1.a" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Release/Lua-5.1" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-DLUA_USE_LINUX" />
+					<Add directory="../../src/lua" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-rdynamic" />
+					<Add library="dl" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="../../src/lua/lobject.c">
+		</Unit>
+		<Unit filename="../../src/lua/lmathlib.c">
+		</Unit>
+		<Unit filename="../../src/lua/lundump.c">
+		</Unit>
+		<Unit filename="../../src/lua/lbaselib.c">
+		</Unit>
+		<Unit filename="../../src/lua/ltablib.c">
+		</Unit>
+		<Unit filename="../../src/lua/lzio.c">
+		</Unit>
+		<Unit filename="../../src/lua/lvm.c">
+		</Unit>
+		<Unit filename="../../src/lua/lstring.c">
+		</Unit>
+		<Unit filename="../../src/lua/ltable.c">
+		</Unit>
+		<Unit filename="../../src/lua/ldblib.c">
+		</Unit>
+		<Unit filename="../../src/lua/lmem.c">
+		</Unit>
+		<Unit filename="../../src/lua/llex.c">
+		</Unit>
+		<Unit filename="../../src/lua/lfunc.c">
+		</Unit>
+		<Unit filename="../../src/lua/liolib.c">
+		</Unit>
+		<Unit filename="../../src/lua/lstate.c">
+		</Unit>
+		<Unit filename="../../src/lua/lcode.c">
+		</Unit>
+		<Unit filename="../../src/lua/linit.c">
+		</Unit>
+		<Unit filename="../../src/lua/ldo.c">
+		</Unit>
+		<Unit filename="../../src/lua/print.c">
+		</Unit>
+		<Unit filename="../../src/lua/ldebug.c">
+		</Unit>
+		<Unit filename="../../src/lua/lauxlib.c">
+		</Unit>
+		<Unit filename="../../src/lua/ldump.c">
+		</Unit>
+		<Unit filename="../../src/lua/loslib.c">
+		</Unit>
+		<Unit filename="../../src/lua/lopcodes.c">
+		</Unit>
+		<Unit filename="../../src/lua/lparser.c">
+		</Unit>
+		<Unit filename="../../src/lua/lstrlib.c">
+		</Unit>
+		<Unit filename="../../src/lua/lgc.c">
+		</Unit>
+		<Unit filename="../../src/lua/ltm.c">
+		</Unit>
+		<Unit filename="../../src/lua/lapi.c">
+		</Unit>
+		<Unit filename="../../src/lua/loadlib.c">
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
+

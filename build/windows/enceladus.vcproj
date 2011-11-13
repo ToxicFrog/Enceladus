@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="enceladus"
-	ProjectGUID="{9D1C32DB-4421-A41D-5708-0969752A759B}"
+	ProjectGUID="{4BDD9C00-C4EA-A306-D11B-8C9DB9AD2FDB}"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -15,7 +15,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="..\.."
-			IntermediateDirectory="obj\Debug"
+			IntermediateDirectory="obj\Debug\enceladus"
 			ConfigurationType="1"
 			CharacterSet="2"
 			>
@@ -41,7 +41,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="m.lib"
+				AdditionalDependencies="m.lib ..\..\lua5.1.lib"
 				OutputFile="$(OutDir)\enceladus.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=""
@@ -87,7 +87,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="..\.."
-			IntermediateDirectory="obj\Release"
+			IntermediateDirectory="obj\Release\enceladus"
 			ConfigurationType="1"
 			CharacterSet="2"
 			>
@@ -112,7 +112,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="m.lib"
+				AdditionalDependencies="m.lib ..\..\lua5.1.lib"
 				OutputFile="$(OutDir)\enceladus.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories=""
@@ -164,131 +164,6 @@
 			Name="src"
 			Filter=""
 			>
-			<Filter
-				Name="lua"
-				Filter=""
-				>
-				<File
-					RelativePath="..\..\src\lua\lobject.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lmathlib.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lundump.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lbaselib.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\ltablib.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lzio.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lvm.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lstring.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\ltable.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\ldblib.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lmem.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\llex.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lfunc.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\liolib.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lstate.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lcode.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\linit.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\ldo.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\print.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\ldebug.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lauxlib.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\ldump.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\loslib.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lopcodes.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lparser.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lstrlib.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lgc.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\ltm.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\lapi.c"
-					>
-				</File>
-				<File
-					RelativePath="..\..\src\lua\loadlib.c"
-					>
-				</File>
-			</Filter>
 			<File
 				RelativePath="..\..\src\loader.c"
 				>

@@ -6,17 +6,22 @@ ifndef config
 endif
 export config
 
-PROJECTS := enceladus
+PROJECTS := Lua-5.1 enceladus
 
 .PHONY: all clean help $(PROJECTS)
 
 all: $(PROJECTS)
 
-enceladus: 
+Lua-5.1: 
+	@echo "==== Building Lua-5.1 ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f Lua-5.1.make
+
+enceladus: Lua-5.1
 	@echo "==== Building enceladus ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f enceladus.make
 
 clean:
+	@${MAKE} --no-print-directory -C . -f Lua-5.1.make clean
 	@${MAKE} --no-print-directory -C . -f enceladus.make clean
 
 help:
@@ -29,6 +34,7 @@ help:
 	@echo "TARGETS:"
 	@echo "   all (default)"
 	@echo "   clean"
+	@echo "   Lua-5.1"
 	@echo "   enceladus"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"

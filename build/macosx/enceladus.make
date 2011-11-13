@@ -20,7 +20,7 @@ ifndef AR
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = obj/Debug
+  OBJDIR     = obj/Debug/enceladus
   TARGETDIR  = ../..
   TARGET     = $(TARGETDIR)/enceladus
   DEFINES   += -DLUA_USE_MACOSX
@@ -28,10 +28,10 @@ ifeq ($(config),debug)
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += 
-  LIBS      += -lm
+  LDFLAGS   += -L../..
+  LIBS      += -lm -lLua-5.1
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += 
+  LDDEPS    += ../../libLua-5.1.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -42,7 +42,7 @@ ifeq ($(config),debug)
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = obj/Release
+  OBJDIR     = obj/Release/enceladus
   TARGETDIR  = ../..
   TARGET     = $(TARGETDIR)/enceladus
   DEFINES   += -DLUA_USE_MACOSX
@@ -50,10 +50,10 @@ ifeq ($(config),release)
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -Wl,-x
-  LIBS      += -lm
+  LDFLAGS   += -Wl,-x -L../..
+  LIBS      += -lm -lLua-5.1
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += 
+  LDDEPS    += ../../libLua-5.1.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -68,36 +68,6 @@ OBJECTS := \
 	$(OBJDIR)/io.o \
 	$(OBJDIR)/toc.o \
 	$(OBJDIR)/enceladus.o \
-	$(OBJDIR)/lobject.o \
-	$(OBJDIR)/lmathlib.o \
-	$(OBJDIR)/lundump.o \
-	$(OBJDIR)/lbaselib.o \
-	$(OBJDIR)/ltablib.o \
-	$(OBJDIR)/lzio.o \
-	$(OBJDIR)/lvm.o \
-	$(OBJDIR)/lstring.o \
-	$(OBJDIR)/ltable.o \
-	$(OBJDIR)/ldblib.o \
-	$(OBJDIR)/lmem.o \
-	$(OBJDIR)/llex.o \
-	$(OBJDIR)/lfunc.o \
-	$(OBJDIR)/liolib.o \
-	$(OBJDIR)/lstate.o \
-	$(OBJDIR)/lcode.o \
-	$(OBJDIR)/linit.o \
-	$(OBJDIR)/ldo.o \
-	$(OBJDIR)/print.o \
-	$(OBJDIR)/ldebug.o \
-	$(OBJDIR)/lauxlib.o \
-	$(OBJDIR)/ldump.o \
-	$(OBJDIR)/loslib.o \
-	$(OBJDIR)/lopcodes.o \
-	$(OBJDIR)/lparser.o \
-	$(OBJDIR)/lstrlib.o \
-	$(OBJDIR)/lgc.o \
-	$(OBJDIR)/ltm.o \
-	$(OBJDIR)/lapi.o \
-	$(OBJDIR)/loadlib.o \
 
 RESOURCES := \
 
@@ -168,96 +138,6 @@ $(OBJDIR)/toc.o: ../../src/toc.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/enceladus.o: ../../src/enceladus.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lobject.o: ../../src/lua/lobject.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lmathlib.o: ../../src/lua/lmathlib.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lundump.o: ../../src/lua/lundump.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lbaselib.o: ../../src/lua/lbaselib.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ltablib.o: ../../src/lua/ltablib.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lzio.o: ../../src/lua/lzio.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lvm.o: ../../src/lua/lvm.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lstring.o: ../../src/lua/lstring.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ltable.o: ../../src/lua/ltable.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ldblib.o: ../../src/lua/ldblib.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lmem.o: ../../src/lua/lmem.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/llex.o: ../../src/lua/llex.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lfunc.o: ../../src/lua/lfunc.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/liolib.o: ../../src/lua/liolib.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lstate.o: ../../src/lua/lstate.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lcode.o: ../../src/lua/lcode.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/linit.o: ../../src/lua/linit.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ldo.o: ../../src/lua/ldo.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/print.o: ../../src/lua/print.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ldebug.o: ../../src/lua/ldebug.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lauxlib.o: ../../src/lua/lauxlib.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ldump.o: ../../src/lua/ldump.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/loslib.o: ../../src/lua/loslib.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lopcodes.o: ../../src/lua/lopcodes.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lparser.o: ../../src/lua/lparser.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lstrlib.o: ../../src/lua/lstrlib.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lgc.o: ../../src/lua/lgc.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ltm.o: ../../src/lua/ltm.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lapi.o: ../../src/lua/lapi.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/loadlib.o: ../../src/lua/loadlib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 
