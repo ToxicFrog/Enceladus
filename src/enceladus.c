@@ -80,6 +80,11 @@ int main(int argc, char ** argv)
     // the name is on top of the stack and the table of packed files right
     // below, thanks to readTOC
     lua_gettable(L, -2); // toc{} main()
+    if (lua_type(L, -1) != LUA_TFUNCTION)
+    {
+        fprintf(stderr, "Error loading entry point: %s\n", lua_tostring(L, -1));
+        return 1;
+    }
     
     // install our custom loader for the embedded libraries
     lua_insert(L, -2);
