@@ -9,6 +9,7 @@
 #include "ints.h"
 #include "toc.h"
 #include "io.h"
+#include "loader.h"
 
 char * embed(lua_State * L, int argc, char ** argv)
 {
@@ -81,7 +82,12 @@ int main(int argc, char ** argv)
     lua_gettable(L, -2); // toc{} main()
     
     // install our custom loader for the embedded libraries
-    // FIXME
+    lua_insert(L, -2);
+    if (!registerLoader(L))
+    {
+        fprintf(stderr, "Error registering custom loader: %s\n", lua_tostring(L, -1));
+        return 1;
+    }
     
     // marshal arguments into lua
     lua_newtable(L); // toc{} main() arg{}
