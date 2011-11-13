@@ -30,6 +30,11 @@ typedef struct {
 int readTOC(lua_State * L, const char * name)
 {
     FILE * fin = fopen(name, "rb");
+    if (!fin)
+    {
+        perror("readTOC");
+        return 0;
+    }
     
     // look for the Enceladus magic number at the end of the executable
     uint32_t magic;
@@ -88,6 +93,8 @@ int writeTOC(lua_State * L, const char * name, size_t nrof_files, char ** files)
         perror("writeTOC");
         return 0;
     }
+    
+    fseek(fout, 0, SEEK_END);
     
     for (int i = 0; i < nrof_files; ++i)
     {
