@@ -1,9 +1,6 @@
-require "mingw32"
-
 solution "enceladus"
     configurations { "Debug", "Release" }
-    platforms { "native", "mingw32", "msys" }
-    location "build"
+    location ("build/"..os.get())
     
     configuration "Debug"
         flags "Symbols"
@@ -11,19 +8,28 @@ solution "enceladus"
     configuration "Release"
         flags "Optimize"
     
-    configuration { "gmake" }
-        buildoptions { "-std=c99" }
-    
-    configuration { "gmake", "not mingw32", "not msys" }
-        linkoptions { "-rdynamic" }
-            
-    configuration { "gmake", "mingw32 or msys" }
-        targetextension ".exe"
-        defines "WIN32"
-        
     project "enceladus"
         kind "ConsoleApp"
         language "C"
         files { "src/*.c", "src/lua/*.c" }
         includedirs { "src", "src/lua" }
         links "m"
+
+        configuration "linux"
+            linkoptions { "-rdynamic" }
+            defines { "LUA_USE_LINUX" }
+            links { "dl" }
+            
+        configuration "macosx"
+            defines { "LUA_USE_MACOSX" }
+        
+        configuration "windows"
+            targetextension ".exe"
+            defines "_WIN32"
+
+        -- if we're using Make, we're probably using gcc or compatible
+        -- these do not default to C99 mode
+        configuration "gmake"
+            buildoptions { "-std=c99" }
+    
+            

@@ -21,15 +21,15 @@ endif
 
 ifeq ($(config),debug)
   OBJDIR     = obj/Debug
-  TARGETDIR  = ..
+  TARGETDIR  = ../..
   TARGET     = $(TARGETDIR)/enceladus
-  DEFINES   += 
-  INCLUDES  += -I../src -I../src/lua
+  DEFINES   += -DLUA_USE_LINUX
+  INCLUDES  += -I../../src -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -rdynamic
-  LIBS      += -lm
+  LIBS      += -lm -ldl
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -43,109 +43,15 @@ endif
 
 ifeq ($(config),release)
   OBJDIR     = obj/Release
-  TARGETDIR  = ..
+  TARGETDIR  = ../..
   TARGET     = $(TARGETDIR)/enceladus
-  DEFINES   += 
-  INCLUDES  += -I../src -I../src/lua
+  DEFINES   += -DLUA_USE_LINUX
+  INCLUDES  += -I../../src -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -s -rdynamic
-  LIBS      += -lm
-  RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += 
-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),debug_mingw32)
-  CC         = i686-w64-mingw32-gcc
-  CXX        = i686-w64-mingw32-g++
-  AR         = i686-w64-mingw32-ar
-  OBJDIR     = obj/mingw32/Debug
-  TARGETDIR  = ..
-  TARGET     = $(TARGETDIR)/enceladus.exe
-  DEFINES   += -DWIN32
-  INCLUDES  += -I../src -I../src/lua
-  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
-  CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += 
-  LIBS      += -lm
-  RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += 
-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),release_mingw32)
-  CC         = i686-w64-mingw32-gcc
-  CXX        = i686-w64-mingw32-g++
-  AR         = i686-w64-mingw32-ar
-  OBJDIR     = obj/mingw32/Release
-  TARGETDIR  = ..
-  TARGET     = $(TARGETDIR)/enceladus.exe
-  DEFINES   += -DWIN32
-  INCLUDES  += -I../src -I../src/lua
-  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
-  CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -s
-  LIBS      += -lm
-  RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += 
-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),debug_msys)
-  OBJDIR     = obj/msys/Debug
-  TARGETDIR  = ..
-  TARGET     = $(TARGETDIR)/enceladus.exe
-  DEFINES   += -DWIN32
-  INCLUDES  += -I../src -I../src/lua
-  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
-  CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += 
-  LIBS      += -lm
-  RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += 
-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
-  define PREBUILDCMDS
-  endef
-  define PRELINKCMDS
-  endef
-  define POSTBUILDCMDS
-  endef
-endif
-
-ifeq ($(config),release_msys)
-  OBJDIR     = obj/msys/Release
-  TARGETDIR  = ..
-  TARGET     = $(TARGETDIR)/enceladus.exe
-  DEFINES   += -DWIN32
-  INCLUDES  += -I../src -I../src/lua
-  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
-  CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -s
-  LIBS      += -lm
+  LIBS      += -lm -ldl
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -252,106 +158,106 @@ $(GCH): $(PCH)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 endif
 
-$(OBJDIR)/loader.o: ../src/loader.c
+$(OBJDIR)/loader.o: ../../src/loader.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/io.o: ../src/io.c
+$(OBJDIR)/io.o: ../../src/io.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/toc.o: ../src/toc.c
+$(OBJDIR)/toc.o: ../../src/toc.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/enceladus.o: ../src/enceladus.c
+$(OBJDIR)/enceladus.o: ../../src/enceladus.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lobject.o: ../src/lua/lobject.c
+$(OBJDIR)/lobject.o: ../../src/lua/lobject.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lmathlib.o: ../src/lua/lmathlib.c
+$(OBJDIR)/lmathlib.o: ../../src/lua/lmathlib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lundump.o: ../src/lua/lundump.c
+$(OBJDIR)/lundump.o: ../../src/lua/lundump.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lbaselib.o: ../src/lua/lbaselib.c
+$(OBJDIR)/lbaselib.o: ../../src/lua/lbaselib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ltablib.o: ../src/lua/ltablib.c
+$(OBJDIR)/ltablib.o: ../../src/lua/ltablib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lzio.o: ../src/lua/lzio.c
+$(OBJDIR)/lzio.o: ../../src/lua/lzio.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lvm.o: ../src/lua/lvm.c
+$(OBJDIR)/lvm.o: ../../src/lua/lvm.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lstring.o: ../src/lua/lstring.c
+$(OBJDIR)/lstring.o: ../../src/lua/lstring.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ltable.o: ../src/lua/ltable.c
+$(OBJDIR)/ltable.o: ../../src/lua/ltable.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ldblib.o: ../src/lua/ldblib.c
+$(OBJDIR)/ldblib.o: ../../src/lua/ldblib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lmem.o: ../src/lua/lmem.c
+$(OBJDIR)/lmem.o: ../../src/lua/lmem.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/llex.o: ../src/lua/llex.c
+$(OBJDIR)/llex.o: ../../src/lua/llex.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lfunc.o: ../src/lua/lfunc.c
+$(OBJDIR)/lfunc.o: ../../src/lua/lfunc.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/liolib.o: ../src/lua/liolib.c
+$(OBJDIR)/liolib.o: ../../src/lua/liolib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lstate.o: ../src/lua/lstate.c
+$(OBJDIR)/lstate.o: ../../src/lua/lstate.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lcode.o: ../src/lua/lcode.c
+$(OBJDIR)/lcode.o: ../../src/lua/lcode.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/linit.o: ../src/lua/linit.c
+$(OBJDIR)/linit.o: ../../src/lua/linit.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ldo.o: ../src/lua/ldo.c
+$(OBJDIR)/ldo.o: ../../src/lua/ldo.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/print.o: ../src/lua/print.c
+$(OBJDIR)/print.o: ../../src/lua/print.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ldebug.o: ../src/lua/ldebug.c
+$(OBJDIR)/ldebug.o: ../../src/lua/ldebug.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lauxlib.o: ../src/lua/lauxlib.c
+$(OBJDIR)/lauxlib.o: ../../src/lua/lauxlib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ldump.o: ../src/lua/ldump.c
+$(OBJDIR)/ldump.o: ../../src/lua/ldump.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/loslib.o: ../src/lua/loslib.c
+$(OBJDIR)/loslib.o: ../../src/lua/loslib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lopcodes.o: ../src/lua/lopcodes.c
+$(OBJDIR)/lopcodes.o: ../../src/lua/lopcodes.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lparser.o: ../src/lua/lparser.c
+$(OBJDIR)/lparser.o: ../../src/lua/lparser.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lstrlib.o: ../src/lua/lstrlib.c
+$(OBJDIR)/lstrlib.o: ../../src/lua/lstrlib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lgc.o: ../src/lua/lgc.c
+$(OBJDIR)/lgc.o: ../../src/lua/lgc.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/ltm.o: ../src/lua/ltm.c
+$(OBJDIR)/ltm.o: ../../src/lua/ltm.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/lapi.o: ../src/lua/lapi.c
+$(OBJDIR)/lapi.o: ../../src/lua/lapi.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/loadlib.o: ../src/lua/loadlib.c
+$(OBJDIR)/loadlib.o: ../../src/lua/loadlib.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 

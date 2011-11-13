@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="enceladus"
-	ProjectGUID="{036783BF-E675-4B4A-0439-FF28994232EB}"
+	ProjectGUID="{769FF189-EAE3-5BF6-F1E3-882FA0C7F226}"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -14,7 +14,7 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory=".."
+			OutputDirectory="..\.."
 			IntermediateDirectory="obj\Debug"
 			ConfigurationType="1"
 			CharacterSet="2"
@@ -22,7 +22,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\src;..\src\lua"
+				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
+				PreprocessorDefinitions="_WIN32"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="3"
@@ -64,7 +65,8 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				AdditionalIncludeDirectories="..\src;..\src\lua"
+				PreprocessorDefinitions="_WIN32"
+				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
 			/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"
@@ -84,7 +86,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory=".."
+			OutputDirectory="..\.."
 			IntermediateDirectory="obj\Release"
 			ConfigurationType="1"
 			CharacterSet="2"
@@ -92,7 +94,8 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="3"
-				AdditionalIncludeDirectories="..\src;..\src\lua"
+				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
+				PreprocessorDefinitions="_WIN32"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="TRUE"
@@ -134,7 +137,8 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				AdditionalIncludeDirectories="..\src;..\src\lua"
+				PreprocessorDefinitions="_WIN32"
+				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
 			/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"
@@ -165,140 +169,140 @@
 				Filter=""
 				>
 				<File
-					RelativePath="..\src\lua\lobject.c"
+					RelativePath="..\..\src\lua\lobject.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lmathlib.c"
+					RelativePath="..\..\src\lua\lmathlib.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lundump.c"
+					RelativePath="..\..\src\lua\lundump.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lbaselib.c"
+					RelativePath="..\..\src\lua\lbaselib.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\ltablib.c"
+					RelativePath="..\..\src\lua\ltablib.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lzio.c"
+					RelativePath="..\..\src\lua\lzio.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lvm.c"
+					RelativePath="..\..\src\lua\lvm.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lstring.c"
+					RelativePath="..\..\src\lua\lstring.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\ltable.c"
+					RelativePath="..\..\src\lua\ltable.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\ldblib.c"
+					RelativePath="..\..\src\lua\ldblib.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lmem.c"
+					RelativePath="..\..\src\lua\lmem.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\llex.c"
+					RelativePath="..\..\src\lua\llex.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lfunc.c"
+					RelativePath="..\..\src\lua\lfunc.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\liolib.c"
+					RelativePath="..\..\src\lua\liolib.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lstate.c"
+					RelativePath="..\..\src\lua\lstate.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lcode.c"
+					RelativePath="..\..\src\lua\lcode.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\linit.c"
+					RelativePath="..\..\src\lua\linit.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\ldo.c"
+					RelativePath="..\..\src\lua\ldo.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\print.c"
+					RelativePath="..\..\src\lua\print.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\ldebug.c"
+					RelativePath="..\..\src\lua\ldebug.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lauxlib.c"
+					RelativePath="..\..\src\lua\lauxlib.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\ldump.c"
+					RelativePath="..\..\src\lua\ldump.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\loslib.c"
+					RelativePath="..\..\src\lua\loslib.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lopcodes.c"
+					RelativePath="..\..\src\lua\lopcodes.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lparser.c"
+					RelativePath="..\..\src\lua\lparser.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lstrlib.c"
+					RelativePath="..\..\src\lua\lstrlib.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lgc.c"
+					RelativePath="..\..\src\lua\lgc.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\ltm.c"
+					RelativePath="..\..\src\lua\ltm.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\lapi.c"
+					RelativePath="..\..\src\lua\lapi.c"
 					>
 				</File>
 				<File
-					RelativePath="..\src\lua\loadlib.c"
+					RelativePath="..\..\src\lua\loadlib.c"
 					>
 				</File>
 			</Filter>
 			<File
-				RelativePath="..\src\loader.c"
+				RelativePath="..\..\src\loader.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\io.c"
+				RelativePath="..\..\src\io.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\toc.c"
+				RelativePath="..\..\src\toc.c"
 				>
 			</File>
 			<File
-				RelativePath="..\src\enceladus.c"
+				RelativePath="..\..\src\enceladus.c"
 				>
 			</File>
 		</Filter>
