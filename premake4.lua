@@ -3,6 +3,7 @@ require "mingw32"
 solution "enceladus"
     configurations { "Debug", "Release" }
     platforms { "native", "mingw32" }
+    location "build"
     
     configuration "Debug"
         flags "Symbols"
