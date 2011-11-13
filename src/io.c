@@ -7,7 +7,7 @@
 
 uint8_t * loadslice(FILE * fd, size_t start, size_t len)
 {
-    uint8_t * buf = malloc(len);
+    uint8_t * buf = calloc(1, len+1);
     fseek(fd, start, SEEK_SET);
     fread(buf, len, 1, fd);
     return buf;
