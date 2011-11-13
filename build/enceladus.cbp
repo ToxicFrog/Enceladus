@@ -13,12 +13,10 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
-					<Add option="-std=c99" />
 					<Add directory="../src" />
 					<Add directory="../src/lua" />
 				</Compiler>
 				<Linker>
-					<Add option="-rdynamic" />
 					<Add library="m" />
 				</Linker>
 			</Target>
@@ -29,17 +27,17 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
-					<Add option="-std=c99" />
 					<Add directory="../src" />
 					<Add directory="../src/lua" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add option="-rdynamic" />
 					<Add library="m" />
 				</Linker>
 			</Target>
 		</Build>
+		<Unit filename="../src/loader.c">
+		</Unit>
 		<Unit filename="../src/io.c">
 		</Unit>
 		<Unit filename="../src/toc.c">

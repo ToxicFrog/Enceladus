@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="enceladus"
-	ProjectGUID="{15CA07AF-8437-51A2-F0F8-8FD979C1A62B}"
+	ProjectGUID="{036783BF-E675-4B4A-0439-FF28994232EB}"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -285,6 +285,10 @@
 					>
 				</File>
 			</Filter>
+			<File
+				RelativePath="..\src\loader.c"
+				>
+			</File>
 			<File
 				RelativePath="..\src\io.c"
 				>

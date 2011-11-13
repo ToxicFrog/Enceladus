@@ -27,6 +27,8 @@ help:
 	@echo "   release"
 	@echo "   debug_mingw32"
 	@echo "   release_mingw32"
+	@echo "   debug_msys"
+	@echo "   release_msys"
 	@echo ""
 	@echo "TARGETS:"
 	@echo "   all (default)"

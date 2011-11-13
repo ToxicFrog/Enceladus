@@ -70,9 +70,9 @@ ifeq ($(config),debug_mingw32)
   OBJDIR     = obj/mingw32/Debug
   TARGETDIR  = ..
   TARGET     = $(TARGETDIR)/enceladus.exe
-  DEFINES   += 
+  DEFINES   += -DWIN32
   INCLUDES  += -I../src -I../src/lua
-  CPPFLAGS  +=  $(DEFINES) $(INCLUDES)
+  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += 
@@ -95,9 +95,53 @@ ifeq ($(config),release_mingw32)
   OBJDIR     = obj/mingw32/Release
   TARGETDIR  = ..
   TARGET     = $(TARGETDIR)/enceladus.exe
-  DEFINES   += 
+  DEFINES   += -DWIN32
   INCLUDES  += -I../src -I../src/lua
-  CPPFLAGS  +=  $(DEFINES) $(INCLUDES)
+  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
+  CXXFLAGS  += $(CFLAGS) 
+  LDFLAGS   += -s
+  LIBS      += -lm
+  RESFLAGS  += $(DEFINES) $(INCLUDES) 
+  LDDEPS    += 
+  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
+  define PREBUILDCMDS
+  endef
+  define PRELINKCMDS
+  endef
+  define POSTBUILDCMDS
+  endef
+endif
+
+ifeq ($(config),debug_msys)
+  OBJDIR     = obj/msys/Debug
+  TARGETDIR  = ..
+  TARGET     = $(TARGETDIR)/enceladus.exe
+  DEFINES   += -DWIN32
+  INCLUDES  += -I../src -I../src/lua
+  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
+  CXXFLAGS  += $(CFLAGS) 
+  LDFLAGS   += 
+  LIBS      += -lm
+  RESFLAGS  += $(DEFINES) $(INCLUDES) 
+  LDDEPS    += 
+  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
+  define PREBUILDCMDS
+  endef
+  define PRELINKCMDS
+  endef
+  define POSTBUILDCMDS
+  endef
+endif
+
+ifeq ($(config),release_msys)
+  OBJDIR     = obj/msys/Release
+  TARGETDIR  = ..
+  TARGET     = $(TARGETDIR)/enceladus.exe
+  DEFINES   += -DWIN32
+  INCLUDES  += -I../src -I../src/lua
+  CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -s
@@ -114,6 +158,7 @@ ifeq ($(config),release_mingw32)
 endif
 
 OBJECTS := \
+	$(OBJDIR)/loader.o \
 	$(OBJDIR)/io.o \
 	$(OBJDIR)/toc.o \
 	$(OBJDIR)/enceladus.o \
@@ -207,6 +252,9 @@ $(GCH): $(PCH)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 endif
 
+$(OBJDIR)/loader.o: ../src/loader.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/io.o: ../src/io.c
 	@echo $(notdir $<)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
