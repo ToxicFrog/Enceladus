@@ -10,6 +10,7 @@
 #include "toc.h"
 #include "io.h"
 #include "loader.h"
+#include "staticlibs.h"
 
 char * embed(lua_State * L, int argc, char ** argv)
 {
@@ -75,6 +76,9 @@ int main(int argc, char ** argv)
     // TOC read successful - we have an embedded lua program to run
     // initialize standard libraries
     luaL_openlibs(L);
+    
+    // load any statically linked libraries
+    enceladus_init_static_libs(L);
     
     // grab the entry point
     // the name is on top of the stack and the table of packed files right

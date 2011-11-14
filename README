@@ -1,0 +1,45 @@
+Enceladus is a program for 'freezing' lua scripts, and their associated (pure- lua) modules, into a single self-contained binary for distribution on linux, windows, or OSX.
+
+It is inspired by, and similar to, lhf's 'srlua'; unlike srlua, however, it permits the embedding of more than one lua file in a single executable. One will be used as the entry point, and the others will be loaded as-needed when require() is called, using package.path - in effect, a virtual filesystem is created from the packed files.
+
+It does not, at present, support packing of binary modules (this may be implemented someday) or manually specifying the mapping between module names and file names (this is definitely planned for a later version).
+
+        BUILDING AND INSTALLING
+        
+If you're on a system with GNU Make and gcc, you can probably just do this:
+
+    (cd build/linux && make)
+
+and it'll spit out an 'enceladus' executable (or 'enceladus.exe' if you're on windows).
+
+If you're using something else, read on.
+        
+A selection of build configurations (for Make, Visual Studio, Code::Blocks, and XCode) are provided in the build/ directory, sorted by platform. Pick the one appropriate to your environment. Not all of these have been tested; bug reports are welcome, but if it's for an IDE I don't have, you'll have to test the fixes yourself.
+
+The Windows makefile is suitable for use in mingw/MSYS and probably Cygwin environments. If cross-compiling on linux and targeting windows, you should use the windows makefile (with 'mingw32-make' rather than 'make').
+
+If you want to make changes to the build system, all of these files are generated using the 'premake4' tool, available at [http://industriousone.com/premake]. To make your changes, edit the 'premake4.lua' file and then use 'premake <action>' to regenerate the build configurations you're using; alternately, use 'sh premake.sh' (on systems with sh) to automatically rebuild them all.
+
+To install enceladus once built, just put it somewhere in your $PATH (windows users: make sure lua5.1.dll goes along with it). Apart from the DLL dependency on windows, it is a self-contained program.
+
+
+        USAGE
+
+To use enceladus, run the program specifying the names of all of the lua files you want to pack. The first one you specify will be used as the entry point. This will generate a new executable, by default named (script name)-(binary name) - for example, this command:
+
+  enceladus main.lua libfoo.lua libbar.lua
+
+Will generate 'main.lua-enceladus' on linux, and 'main.lua-enceladus.exe' on windows.
+
+Now that embedding is done, you can simply run the generated file and it will act as though you had run the lua script. Command line arguments are passed in using the same protocol as in lua stand-alone, ie, they are available both in (...) at the top level and the 'arg' global.
+
+
+        NOTES ABOUT BINARY MODULES
+        
+Embedding of dynamically loaded binary modules is not currently supported. It might become supported in a future version if I can come up with a good way of doing it on multiple platforms.
+
+Static embedding of binary modules is possible (although it requires a recompile and editing of the link settings); enceladus will call 'enceladus_init_static_libs(L)' just after luaL_openlibs. By default this function does nothing; by editing the definition in staticlibs.c and linking against whatever modules you're using as C libraries, you can 'bake' binary modules such as lposix or lfs into the executable at at compile time.
+
+Loading of binary modules at runtime is also possible. Enceladus follows the standard protocol for this: the Linux version is compiled with -rdynamic and loaded modules are expected to resolve symbols against the program loading them, while the windows version comes with a separate lua5.1.dll which expects to be used both by enceladus.exe and any modules it loads. (It should be lua4windows compatible.) I have no idea what protocol is for this on OSX; patches are welcome.
+
+:wrap=soft:

@@ -3,7 +3,7 @@
 	ProjectType="Visual C++"
 	Version="7.10"
 	Name="enceladus"
-	ProjectGUID="{4BDD9C00-C4EA-A306-D11B-8C9DB9AD2FDB}"
+	ProjectGUID="{F4835061-B519-0E77-0AE1-3E111FF80C8D}"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -164,6 +164,10 @@
 			Name="src"
 			Filter=""
 			>
+			<File
+				RelativePath="..\..\src\staticlibs.c"
+				>
+			</File>
 			<File
 				RelativePath="..\..\src\loader.c"
 				>

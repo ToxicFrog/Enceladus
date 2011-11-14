@@ -1,9 +1,9 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lua-5.1", "Lua-5.1.vcproj", "{B2CD53C5-961B-A05E-028B-4C6D54BE6106}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lua-5.1", "Lua-5.1.vcproj", "{550F2CC1-6EF2-CECE-D4B2-6CC9ADB15E99}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "enceladus", "enceladus.vcproj", "{4BDD9C00-C4EA-A306-D11B-8C9DB9AD2FDB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "enceladus", "enceladus.vcproj", "{F4835061-B519-0E77-0AE1-3E111FF80C8D}"
 	ProjectSection(ProjectDependencies) = postProject
-		{B2CD53C5-961B-A05E-028B-4C6D54BE6106} = {B2CD53C5-961B-A05E-028B-4C6D54BE6106}
+		{550F2CC1-6EF2-CECE-D4B2-6CC9ADB15E99} = {550F2CC1-6EF2-CECE-D4B2-6CC9ADB15E99}
 	EndProjectSection
 EndProject
 Global
@@ -14,14 +14,14 @@ Global
 	GlobalSection(ProjectDependencies) = postSolution
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{B2CD53C5-961B-A05E-028B-4C6D54BE6106}.Debug.ActiveCfg = Debug|Win32
-		{B2CD53C5-961B-A05E-028B-4C6D54BE6106}.Debug.Build.0 = Debug|Win32
-		{B2CD53C5-961B-A05E-028B-4C6D54BE6106}.Release.ActiveCfg = Release|Win32
-		{B2CD53C5-961B-A05E-028B-4C6D54BE6106}.Release.Build.0 = Release|Win32
-		{4BDD9C00-C4EA-A306-D11B-8C9DB9AD2FDB}.Debug.ActiveCfg = Debug|Win32
-		{4BDD9C00-C4EA-A306-D11B-8C9DB9AD2FDB}.Debug.Build.0 = Debug|Win32
-		{4BDD9C00-C4EA-A306-D11B-8C9DB9AD2FDB}.Release.ActiveCfg = Release|Win32
-		{4BDD9C00-C4EA-A306-D11B-8C9DB9AD2FDB}.Release.Build.0 = Release|Win32
+		{550F2CC1-6EF2-CECE-D4B2-6CC9ADB15E99}.Debug.ActiveCfg = Debug|Win32
+		{550F2CC1-6EF2-CECE-D4B2-6CC9ADB15E99}.Debug.Build.0 = Debug|Win32
+		{550F2CC1-6EF2-CECE-D4B2-6CC9ADB15E99}.Release.ActiveCfg = Release|Win32
+		{550F2CC1-6EF2-CECE-D4B2-6CC9ADB15E99}.Release.Build.0 = Release|Win32
+		{F4835061-B519-0E77-0AE1-3E111FF80C8D}.Debug.ActiveCfg = Debug|Win32
+		{F4835061-B519-0E77-0AE1-3E111FF80C8D}.Debug.Build.0 = Debug|Win32
+		{F4835061-B519-0E77-0AE1-3E111FF80C8D}.Release.ActiveCfg = Release|Win32
+		{F4835061-B519-0E77-0AE1-3E111FF80C8D}.Release.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
