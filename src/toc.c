@@ -1,10 +1,12 @@
 // The TOC consists of any number of entries, followed by a footer
-// The footer is the number of entries (size_t) followed by the magic
+// The footer is the number of entries (uint32_t) followed by the magic
 // number (uint32_t)
 // an entry is:
-// struct { size_t offset; size_t namesize; size_t filesize; }
+// struct { uint32_t offset; uint32_t namesize; uint32_t filesize; }
 // and the corresponding data is
 // char[namesize] filename; uint8_t[filesize] data;
+// we use uint32_t rather than size_t so that a 64bit enceladus can cross-embed
+// onto a 32bit one, or vice versa
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,9 +20,9 @@
 const uint32_t MAGIC_NUMBER = 0x454E4345; // 'ENCE'
 
 typedef struct {
-    size_t offset;
-    size_t namesize;
-    size_t filesize;
+    uint32_t offset;
+    uint32_t namesize;
+    uint32_t filesize;
 } TOCEntry;
 
 // load the TOC from the end of the named file
@@ -47,12 +49,12 @@ int readTOC(lua_State * L, const char * name)
     }
     
     // we found it; read the TOC
-    size_t nrof_files;
-    fseek(fin, -4 - sizeof(size_t), SEEK_END);
-    fread(&nrof_files, sizeof(size_t), 1, fin);
+    uint32_t nrof_files;
+    fseek(fin, -4 - sizeof(uint32_t), SEEK_END);
+    fread(&nrof_files, sizeof(uint32_t), 1, fin);
     
     TOCEntry * TOC = malloc(sizeof(TOCEntry) * nrof_files);
-    fseek(fin, -4 - sizeof(size_t) - sizeof(TOCEntry) * nrof_files, SEEK_END);
+    fseek(fin, -4 - sizeof(uint32_t) - sizeof(TOCEntry) * nrof_files, SEEK_END);
     fread(TOC, sizeof(TOCEntry), nrof_files, fin);
     
     lua_newtable(L);
@@ -124,7 +126,7 @@ int writeTOC(lua_State * L, const char * name, size_t nrof_files, char ** files)
     }
     
     fwrite(TOC, sizeof(TOCEntry), nrof_files, fout);
-    fwrite(&nrof_files, sizeof(size_t), 1, fout);
+    fwrite(&nrof_files, sizeof(uint32_t), 1, fout);
     fwrite(&MAGIC_NUMBER, sizeof(uint32_t), 1, fout);
     fclose(fout);
     
