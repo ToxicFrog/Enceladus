@@ -12,24 +12,34 @@
 #include "loader.h"
 #include "staticlibs.h"
 
-char * embed(lua_State * L, int argc, char ** argv)
+struct {
+    char * outname;
+    char * targetname;
+} options;
+
+char * embed(lua_State * L, int nlibs, char ** libs)
 {
     // create name of output file - if we're invoked as
     //  enceladus.exe main.lua lib1.lua lib2.lua
     // the name of the output file is main.lua-enceladus.exe
-    char * myname = strrchr(argv[0], '/');
-    if (!myname) myname = strrchr(argv[0], '\\');
+    char * myname = options.outname;
+    if (!myname)
+    {
+        myname = strrchr(options.targetname, '/');
+        
+        if (!myname) myname = strrchr(options.targetname, '\\');
+        
+        if (!myname) myname = options.targetname;
+        else myname++;
+    }
     
-    if (!myname) myname = argv[0];
-    else myname++;
-    
-    size_t namelen = strlen(argv[1]) + strlen(myname) + 2;
+    size_t namelen = strlen(libs[0]) + strlen(myname) + 2;
     char * outname = malloc(namelen);
-    snprintf(outname, namelen, "%s-%s", argv[1], myname);
+    snprintf(outname, namelen, "%s-%s", libs[0], myname);
     
     // copy input file to output file
     size_t size;
-    uint8_t * buf = loadfile(argv[0], &size);
+    uint8_t * buf = loadfile(options.targetname, &size);
     FILE * fout = fopen(outname, "wb");
     if (!fout)
     {
@@ -41,10 +51,32 @@ char * embed(lua_State * L, int argc, char ** argv)
     fclose(fout);
     free(buf);
     
-    if (!writeTOC(L, outname, argc-1, &(argv[1])))
+    if (!writeTOC(L, outname, nlibs, libs))
         return NULL;
     
     return outname;
+}
+
+void parse_args(int * argc, char *** argv)
+{
+    int i;
+    options.targetname = (*argv)[0];
+    options.outname = NULL;
+    
+    for (i = 1; i < *argc; ++i)
+    {
+        if (strcmp((*argv)[i], "-o") == 0)
+        {
+            options.outname = (*argv)[++i];
+        } else if (strcmp((*argv)[i], "-t") == 0) {
+            options.targetname = (*argv)[++i];
+        } else {
+            break;
+        }
+    }
+    
+    *argv = &((*argv)[i]);
+    *argc = *argc - i;
 }
 
 int main(int argc, char ** argv)
@@ -62,6 +94,8 @@ int main(int argc, char ** argv)
         }
         
         // parse command line and embed lua code, then exit
+        parse_args(&argc, &argv);
+        
         char * outname = embed(L, argc, argv);
         if (outname)
         {
