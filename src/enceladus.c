@@ -33,9 +33,13 @@ char * embed(lua_State * L, int nlibs, char ** libs)
         else myname++;
     }
     
-    size_t namelen = strlen(libs[0]) + strlen(myname) + 2;
-    char * outname = malloc(namelen);
-    snprintf(outname, namelen, "%s-%s", libs[0], myname);
+    char * outname = options.outname;
+    if (!outname)
+    {
+      size_t namelen = strlen(libs[0]) + strlen(myname) + 2;
+      outname = malloc(namelen);
+      snprintf(outname, namelen, "%s-%s", libs[0], myname);
+    }
     
     // copy input file to output file
     size_t size;
