@@ -3,7 +3,10 @@
 	<Workspace title="enceladus">
 		<Project filename="Lua-5.1.cbp" active="1">
 		</Project>
+		<Project filename="enceladus-lib.cbp">
+		</Project>
 		<Project filename="enceladus.cbp">
+			<Depends filename="enceladus-lib.cbp" />
 			<Depends filename="Lua-5.1.cbp" />
 		</Project>
 	</Workspace>

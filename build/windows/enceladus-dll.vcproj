@@ -2,8 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="enceladus"
-	ProjectGUID="{8A14139E-892C-B9FA-0E7C-38A8A3F903F4}"
+	Name="enceladus-dll"
+	ProjectGUID="{28E36467-4CC2-9A09-D590-6545CB2D2FEB}"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -15,7 +15,7 @@
 		<Configuration
 			Name="Debug|Win32"
 			OutputDirectory="..\..\bin"
-			IntermediateDirectory="obj\Debug\enceladus"
+			IntermediateDirectory="obj\Debug\enceladus-dll"
 			ConfigurationType="1"
 			CharacterSet="2"
 			>
@@ -31,7 +31,7 @@
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				ProgramDataBaseFileName="$(OutDir)\enceladus-static-dbg.pdb"
+				ProgramDataBaseFileName="$(OutDir)\enceladus-dbg.pdb"
 				DebugInformationFormat="4"
 				CompileAs="1"
 			/>
@@ -40,12 +40,12 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="..\..\lib\windows\enceladus-lib-dbg.lib m.lib ..\..\lib\windows\Lua-5.1-dbg.lib"
-				OutputFile="$(OutDir)\enceladus-static-dbg.exe"
+				AdditionalDependencies="..\..\lib\windows\enceladus-lib-dbg.lib m.lib ..\..\lib\windows\lua5.1-dbg.lib"
+				OutputFile="$(OutDir)\enceladus-dbg.exe"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="TRUE"
-				ProgramDataBaseFileName="$(OutDir)\enceladus-static-dbg.pdb"
+				ProgramDataBaseFileName="$(OutDir)\enceladus-dbg.pdb"
 				SubSystem="1"
 				EntryPointSymbol="mainCRTStartup"
 				TargetMachine="1"
@@ -85,7 +85,7 @@
 		<Configuration
 			Name="Release|Win32"
 			OutputDirectory="..\..\bin"
-			IntermediateDirectory="obj\Release\enceladus"
+			IntermediateDirectory="obj\Release\enceladus-dll"
 			ConfigurationType="1"
 			CharacterSet="2"
 			>
@@ -100,7 +100,7 @@
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				ProgramDataBaseFileName="$(OutDir)\enceladus-static.pdb"
+				ProgramDataBaseFileName="$(OutDir)\enceladus.pdb"
 				DebugInformationFormat="0"
 				CompileAs="1"
 			/>
@@ -109,8 +109,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="..\..\lib\windows\enceladus-lib.lib m.lib ..\..\lib\windows\Lua-5.1.lib"
-				OutputFile="$(OutDir)\enceladus-static.exe"
+				AdditionalDependencies="..\..\lib\windows\enceladus-lib.lib m.lib ..\..\lib\windows\lua5.1.lib"
+				OutputFile="$(OutDir)\enceladus.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories=""
 				GenerateDebugInformation="FALSE"

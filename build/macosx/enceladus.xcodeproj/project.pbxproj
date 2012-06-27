@@ -7,96 +7,98 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6EBA01F76C3C35B23D9F4FF8 /* enceladus.c in Sources */ = {isa = PBXBuildFile; fileRef = 363D160C7AA02FDB15452290 /* enceladus.c */; };
-		72245377784B1BFE5C685950 /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 25D363A36941723E792B0963 /* io.c */; };
-		607B24CF0F625B1B54AA24A8 /* loader.c in Sources */ = {isa = PBXBuildFile; fileRef = 3D9E29187CAC38136E917956 /* loader.c */; };
-		39E01EEA47E223221128410D /* staticlibs.c in Sources */ = {isa = PBXBuildFile; fileRef = 7DAC4364269F69E87917643E /* staticlibs.c */; };
-		7E225CEA1A067ACE14FD0898 /* toc.c in Sources */ = {isa = PBXBuildFile; fileRef = 2C86034D148424D11F4B70ED /* toc.c */; };
-		416F64A66E235B765F740321 /* libLua-5.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BFD41B271ED508166841139 /* libLua-5.1.a */; };
+		71DE41FD26856355196D2206 /* libenceladus-lib-dbg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46E607BC30BE391C31933173 /* libenceladus-lib-dbg.a */; };
+		680955524DBA41C37DE041B2 /* libLua-5.1-dbg.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A8F73F71C7933A95DDC0EFC /* libLua-5.1-dbg.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		19625237799D7F3927F03EDF /* PBXContainerItemProxy */ = {
+		0A14238868FF7EF46D3E5E89 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 330D720A5D777AEF152C6EA0 /* Lua-5.1.xcodeproj */;
+			containerPortal = 77753EBD59BA288E73F87E09 /* enceladus-lib.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 5D5D6181577209EA67594429;
-			remoteInfo = "libLua-5.1.a";
+			remoteGlobalIDString = 714B34FB677C40CB4F975725;
+			remoteInfo = "libenceladus-lib-dbg.a";
 		};
-		6CB149AB46F73BA863BC7020 /* PBXContainerItemProxy */ = {
+		0E6553DE16134DFF468B6692 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 330D720A5D777AEF152C6EA0 /* Lua-5.1.xcodeproj */;
+			containerPortal = 77753EBD59BA288E73F87E09 /* enceladus-lib.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 287F1D8454523F21651A56E9;
-			remoteInfo = "libLua-5.1.a";
+			remoteGlobalIDString = 1DCB05097B90762C2E766308;
+			remoteInfo = "libenceladus-lib-dbg.a";
+		};
+		359678E81AB756101B450D90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09B75862192B7A5D24C90007 /* Lua-5.1.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3BB925393CF67E087A836F70;
+			remoteInfo = "libLua-5.1-dbg.a";
+		};
+		4C3B255A3118353A244F1E57 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09B75862192B7A5D24C90007 /* Lua-5.1.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3CAD6CCD0FAB6168376952A9;
+			remoteInfo = "libLua-5.1-dbg.a";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		363D160C7AA02FDB15452290 /* enceladus.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "enceladus.c"; path = "enceladus.c"; sourceTree = "<group>"; };
-		25D363A36941723E792B0963 /* io.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "io.c"; path = "io.c"; sourceTree = "<group>"; };
-		3D9E29187CAC38136E917956 /* loader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "loader.c"; path = "loader.c"; sourceTree = "<group>"; };
-		7DAC4364269F69E87917643E /* staticlibs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "staticlibs.c"; path = "staticlibs.c"; sourceTree = "<group>"; };
-		2C86034D148424D11F4B70ED /* toc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "toc.c"; path = "toc.c"; sourceTree = "<group>"; };
-		255B6F133B2F385529C2280C /* enceladus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "enceladus"; path = "enceladus"; sourceTree = BUILT_PRODUCTS_DIR; };
-		330D720A5D777AEF152C6EA0 /* Lua-5.1.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Lua-5.1.xcodeproj"; path = "Lua-5.1.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		6ACE6C7C5D7B32C458B42380 /* enceladus-dbg */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; name = "enceladus-dbg"; path = "enceladus-dbg"; sourceTree = BUILT_PRODUCTS_DIR; };
+		77753EBD59BA288E73F87E09 /* enceladus-lib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "enceladus-lib.xcodeproj"; path = "enceladus-lib.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		09B75862192B7A5D24C90007 /* Lua-5.1.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "Lua-5.1.xcodeproj"; path = "Lua-5.1.xcodeproj"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		63A5381818805593089A7F05 /* Frameworks */ = {
+		03BD71BB479120372565256D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				416F64A66E235B765F740321 /* libLua-5.1.a in Frameworks */,
+				71DE41FD26856355196D2206 /* libenceladus-lib-dbg.a in Frameworks */,
+				680955524DBA41C37DE041B2 /* libLua-5.1-dbg.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5A4B6EE829DA08F16104219F /* enceladus */ = {
+		10697512717757707B812662 /* enceladus */ = {
 			isa = PBXGroup;
 			children = (
-				4CAF235B7A7445797CAA2868 /* src */,
-				742475782D67038750940211 /* Products */,
-				282F4E4045764ECE38293E8D /* Projects */,
+				3EF5772470A64C6766DB2031 /* Products */,
+				4F2D1C72191969E57282345F /* Projects */,
 			);
 			name = "enceladus";
 			sourceTree = "<group>";
 		};
-		4CAF235B7A7445797CAA2868 /* src */ = {
+		3EF5772470A64C6766DB2031 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				363D160C7AA02FDB15452290 /* enceladus.c */,
-				25D363A36941723E792B0963 /* io.c */,
-				3D9E29187CAC38136E917956 /* loader.c */,
-				7DAC4364269F69E87917643E /* staticlibs.c */,
-				2C86034D148424D11F4B70ED /* toc.c */,
-			);
-			name = "src";
-			path = ../../src;
-			sourceTree = "<group>";
-		};
-		742475782D67038750940211 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				255B6F133B2F385529C2280C /* enceladus */,
+				6ACE6C7C5D7B32C458B42380 /* enceladus-dbg */,
 			);
 			name = "Products";
 			sourceTree = "<group>";
 		};
-		282F4E4045764ECE38293E8D /* Projects */ = {
+		4F2D1C72191969E57282345F /* Projects */ = {
 			isa = PBXGroup;
 			children = (
-				330D720A5D777AEF152C6EA0 /* Lua-5.1.xcodeproj */,
+				77753EBD59BA288E73F87E09 /* enceladus-lib.xcodeproj */,
+				09B75862192B7A5D24C90007 /* Lua-5.1.xcodeproj */,
 			);
 			name = "Projects";
 			sourceTree = "<group>";
 		};
-		425758D478C9594E2DF370C3 /* Products */ = {
+		495C17F0207A225D72D9762A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3BFD41B271ED508166841139 /* libLua-5.1.a */,
+				46E607BC30BE391C31933173 /* libenceladus-lib-dbg.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7BA34A440D716FB62F8B02C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A8F73F71C7933A95DDC0EFC /* libLua-5.1-dbg.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,23 +106,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		597B20FE30B43A1C3AB719F4 /* enceladus */ = {
+		68F4146D48BA25EA1275433D /* enceladus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 640F5399789911765720492E /* Build configuration list for PBXNativeTarget "enceladus" */;
+			buildConfigurationList = 3FCD44C6496E708B7DE37B02 /* Build configuration list for PBXNativeTarget "enceladus" */;
 			buildPhases = (
-				13887F50176E58FF4E1E4F97 /* Resources */,
-				178C012C41A275047C1B56CE /* Sources */,
-				63A5381818805593089A7F05 /* Frameworks */,
+				21FE6FC13CFF48845316566D /* Resources */,
+				6A8A5CCE2ECF03B6572C5399 /* Sources */,
+				03BD71BB479120372565256D /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				260419484C6B158820227FE6 /* PBXTargetDependency */,
+				745D38B54706066F34EB6785 /* PBXTargetDependency */,
+				13C432B5723629D700B438C1 /* PBXTargetDependency */,
 			);
 			name = "enceladus";
 			productInstallPath = "$(HOME)/bin";
 			productName = "enceladus";
-			productReference = 255B6F133B2F385529C2280C /* enceladus */;
+			productReference = 6ACE6C7C5D7B32C458B42380 /* enceladus-dbg */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -131,33 +134,44 @@
 			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "enceladus" */;
 			compatibilityVersion = "Xcode 3.1";
 			hasScannedForEncodings = 1;
-			mainGroup = 5A4B6EE829DA08F16104219F /* enceladus */;
+			mainGroup = 10697512717757707B812662 /* enceladus */;
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 425758D478C9594E2DF370C3 /* Products */;
-					ProjectRef = 330D720A5D777AEF152C6EA0 /* Lua-5.1.xcodeproj */;
+					ProductGroup = 495C17F0207A225D72D9762A /* Products */;
+					ProjectRef = 77753EBD59BA288E73F87E09 /* enceladus-lib.xcodeproj */;
+				},
+				{
+					ProductGroup = 7BA34A440D716FB62F8B02C6 /* Products */;
+					ProjectRef = 09B75862192B7A5D24C90007 /* Lua-5.1.xcodeproj */;
 				},
 			);
 			projectRoot = "";
 			targets = (
-				597B20FE30B43A1C3AB719F4 /* enceladus */,
+				68F4146D48BA25EA1275433D /* enceladus-dbg */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		3BFD41B271ED508166841139 /* libLua-5.1.a */ = {
+		46E607BC30BE391C31933173 /* libenceladus-lib-dbg.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "../../libLua-5.1.a";
-			remoteRef = 19625237799D7F3927F03EDF /* PBXContainerItemProxy */;
+			path = "../../lib/macosx/libenceladus-lib-dbg.a";
+			remoteRef = 0A14238868FF7EF46D3E5E89 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1A8F73F71C7933A95DDC0EFC /* libLua-5.1-dbg.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "../../lib/macosx/libLua-5.1-dbg.a";
+			remoteRef = 359678E81AB756101B450D90 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
-		13887F50176E58FF4E1E4F97 /* Resources */ = {
+		21FE6FC13CFF48845316566D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -167,15 +181,10 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		178C012C41A275047C1B56CE /* Sources */ = {
+		6A8A5CCE2ECF03B6572C5399 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EBA01F76C3C35B23D9F4FF8 /* enceladus.c in Sources */,
-				72245377784B1BFE5C685950 /* io.c in Sources */,
-				607B24CF0F625B1B54AA24A8 /* loader.c in Sources */,
-				39E01EEA47E223221128410D /* staticlibs.c in Sources */,
-				7E225CEA1A067ACE14FD0898 /* toc.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,32 +194,37 @@
 /* End PBXVariantGroup section */
 
 /* Begin PBXTargetDependency section */
-		260419484C6B158820227FE6 /* PBXTargetDependency */ = {
+		745D38B54706066F34EB6785 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = "libLua-5.1.a";
-			targetProxy = 6CB149AB46F73BA863BC7020 /* PBXContainerItemProxy */;
+			name = "libenceladus-lib-dbg.a";
+			targetProxy = 0E6553DE16134DFF468B6692 /* PBXContainerItemProxy */;
+		};
+		13C432B5723629D700B438C1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "libLua-5.1-dbg.a";
+			targetProxy = 4C3B255A3118353A244F1E57 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		244308DA65D755B945416D78 /* Debug */ = {
+		30AF72D474E049B6758A0F70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CONFIGURATION_BUILD_DIR = ../..;
+				CONFIGURATION_BUILD_DIR = ../../bin;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
-				PRODUCT_NAME = "enceladus";
+				PRODUCT_NAME = "enceladus-dbg";
 			};
 			name = "Debug";
 		};
-		358C5C4A6F8406D9337A44C3 /* Release */ = {
+		7229607312117C36207E7534 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				CONFIGURATION_BUILD_DIR = ../..;
+				CONFIGURATION_BUILD_DIR = ../../bin;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_MODEL_TUNING = G5;
 				INSTALL_PATH = /usr/local/bin;
@@ -218,7 +232,7 @@
 			};
 			name = "Release";
 		};
-		21BA08184EF61A1029296A5C /* Debug */ = {
+		669F37893F9972AD507F265D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -233,21 +247,17 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"../../src",
-					"../../src/lua",
-				);
 				OBJROOT = "obj/Debug/enceladus";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lm",
 				);
 				PREBINDING = NO;
-				SYMROOT = "../..";
+				SYMROOT = "../../bin";
 			};
 			name = "Debug";
 		};
-		4EC529F42EA6721C77C543BE /* Release */ = {
+		155825EC74136547755445DF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
@@ -260,28 +270,24 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = (
-					"../../src",
-					"../../src/lua",
-				);
 				OBJROOT = "obj/Release/enceladus";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lm",
 				);
 				PREBINDING = NO;
-				SYMROOT = "../..";
+				SYMROOT = "../../bin";
 			};
 			name = "Release";
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		640F5399789911765720492E /* Build configuration list for PBXNativeTarget "enceladus" */ = {
+		3FCD44C6496E708B7DE37B02 /* Build configuration list for PBXNativeTarget "enceladus-dbg" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				244308DA65D755B945416D78 /* Debug */,
-				358C5C4A6F8406D9337A44C3 /* Release */,
+				30AF72D474E049B6758A0F70 /* Debug */,
+				7229607312117C36207E7534 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";
@@ -289,8 +295,8 @@
 		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "enceladus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				21BA08184EF61A1029296A5C /* Debug */,
-				4EC529F42EA6721C77C543BE /* Release */,
+				669F37893F9972AD507F265D /* Debug */,
+				155825EC74136547755445DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = "Debug";

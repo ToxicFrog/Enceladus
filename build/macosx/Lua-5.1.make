@@ -21,8 +21,8 @@ endif
 
 ifeq ($(config),debug)
   OBJDIR     = obj/Debug/Lua-5.1
-  TARGETDIR  = ../..
-  TARGET     = $(TARGETDIR)/libLua-5.1.a
+  TARGETDIR  = ../../lib/macosx
+  TARGET     = $(TARGETDIR)/libLua-5.1-dbg.a
   DEFINES   += -DLUA_USE_MACOSX
   INCLUDES  += -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
@@ -43,7 +43,7 @@ endif
 
 ifeq ($(config),release)
   OBJDIR     = obj/Release/Lua-5.1
-  TARGETDIR  = ../..
+  TARGETDIR  = ../../lib/macosx
   TARGET     = $(TARGETDIR)/libLua-5.1.a
   DEFINES   += -DLUA_USE_MACOSX
   INCLUDES  += -I../../src/lua

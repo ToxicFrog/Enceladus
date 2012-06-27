@@ -6,7 +6,7 @@ ifndef config
 endif
 export config
 
-PROJECTS := Lua-5.1 enceladus
+PROJECTS := Lua-5.1 Lua-5.1-dll enceladus-lib enceladus enceladus-dll
 
 .PHONY: all clean help $(PROJECTS)
 
@@ -16,13 +16,28 @@ Lua-5.1:
 	@echo "==== Building Lua-5.1 ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f Lua-5.1.make
 
-enceladus: Lua-5.1
+Lua-5.1-dll: 
+	@echo "==== Building Lua-5.1-dll ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f Lua-5.1-dll.make
+
+enceladus-lib: 
+	@echo "==== Building enceladus-lib ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f enceladus-lib.make
+
+enceladus: enceladus-lib Lua-5.1
 	@echo "==== Building enceladus ($(config)) ===="
 	@${MAKE} --no-print-directory -C . -f enceladus.make
 
+enceladus-dll: enceladus-lib Lua-5.1-dll
+	@echo "==== Building enceladus-dll ($(config)) ===="
+	@${MAKE} --no-print-directory -C . -f enceladus-dll.make
+
 clean:
 	@${MAKE} --no-print-directory -C . -f Lua-5.1.make clean
+	@${MAKE} --no-print-directory -C . -f Lua-5.1-dll.make clean
+	@${MAKE} --no-print-directory -C . -f enceladus-lib.make clean
 	@${MAKE} --no-print-directory -C . -f enceladus.make clean
+	@${MAKE} --no-print-directory -C . -f enceladus-dll.make clean
 
 help:
 	@echo "Usage: make [config=name] [target]"
@@ -35,6 +50,9 @@ help:
 	@echo "   all (default)"
 	@echo "   clean"
 	@echo "   Lua-5.1"
+	@echo "   Lua-5.1-dll"
+	@echo "   enceladus-lib"
 	@echo "   enceladus"
+	@echo "   enceladus-dll"
 	@echo ""
 	@echo "For more information, see http://industriousone.com/premake/quick-start"

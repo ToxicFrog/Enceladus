@@ -7,7 +7,7 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="../../libLua-5.1.a" prefix_auto="0" extension_auto="0" />
+				<Option output="../../lib/linux/libLua-5.1-dbg.a" prefix_auto="0" extension_auto="0" />
 				<Option object_output="obj/Debug/Lua-5.1" />
 				<Option type="2" />
 				<Option compiler="gcc" />
@@ -22,7 +22,7 @@
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="../../libLua-5.1.a" prefix_auto="0" extension_auto="0" />
+				<Option output="../../lib/linux/libLua-5.1.a" prefix_auto="0" extension_auto="0" />
 				<Option object_output="obj/Release/Lua-5.1" />
 				<Option type="2" />
 				<Option compiler="gcc" />

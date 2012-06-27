@@ -2,8 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="enceladus"
-	ProjectGUID="{8A14139E-892C-B9FA-0E7C-38A8A3F903F4}"
+	Name="enceladus-lib"
+	ProjectGUID="{0D1C6007-8931-03EC-869A-1CFC190178F5}"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -14,14 +14,15 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\..\bin"
-			IntermediateDirectory="obj\Debug\enceladus"
-			ConfigurationType="1"
+			OutputDirectory="..\..\lib\windows"
+			IntermediateDirectory="obj\Debug\enceladus-lib"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
+				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
 				PreprocessorDefinitions="_WIN32;LUA_WIN"
 				MinimalRebuild="TRUE"
 				BasicRuntimeChecks="3"
@@ -31,7 +32,7 @@
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				ProgramDataBaseFileName="$(OutDir)\enceladus-static-dbg.pdb"
+				ProgramDataBaseFileName="$(OutDir)\enceladus-lib-dbg.pdb"
 				DebugInformationFormat="4"
 				CompileAs="1"
 			/>
@@ -39,16 +40,8 @@
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="..\..\lib\windows\enceladus-lib-dbg.lib m.lib ..\..\lib\windows\Lua-5.1-dbg.lib"
-				OutputFile="$(OutDir)\enceladus-static-dbg.exe"
-				LinkIncremental="2"
-				AdditionalLibraryDirectories=""
-				GenerateDebugInformation="TRUE"
-				ProgramDataBaseFileName="$(OutDir)\enceladus-static-dbg.pdb"
-				SubSystem="1"
-				EntryPointSymbol="mainCRTStartup"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\enceladus-lib-dbg.lib"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -65,6 +58,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="_WIN32;LUA_WIN"
+				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
 			/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"
@@ -84,14 +78,15 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\..\bin"
-			IntermediateDirectory="obj\Release\enceladus"
-			ConfigurationType="1"
+			OutputDirectory="..\..\lib\windows"
+			IntermediateDirectory="obj\Release\enceladus-lib"
+			ConfigurationType="4"
 			CharacterSet="2"
 			>
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="3"
+				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
 				PreprocessorDefinitions="_WIN32;LUA_WIN"
 				StringPooling="TRUE"
 				RuntimeLibrary="2"
@@ -100,7 +95,7 @@
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				ProgramDataBaseFileName="$(OutDir)\enceladus-static.pdb"
+				ProgramDataBaseFileName="$(OutDir)\enceladus-lib.pdb"
 				DebugInformationFormat="0"
 				CompileAs="1"
 			/>
@@ -108,17 +103,8 @@
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
-				Name="VCLinkerTool"
-				AdditionalDependencies="..\..\lib\windows\enceladus-lib.lib m.lib ..\..\lib\windows\Lua-5.1.lib"
-				OutputFile="$(OutDir)\enceladus-static.exe"
-				LinkIncremental="1"
-				AdditionalLibraryDirectories=""
-				GenerateDebugInformation="FALSE"
-				SubSystem="1"
-				OptimizeReferences="2"
-				EnableCOMDATFolding="2"
-				EntryPointSymbol="mainCRTStartup"
-				TargetMachine="1"
+				Name="VCLibrarianTool"
+				OutputFile="$(OutDir)\enceladus-lib.lib"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -135,6 +121,7 @@
 			<Tool
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="_WIN32;LUA_WIN"
+				AdditionalIncludeDirectories="..\..\src;..\..\src\lua"
 			/>
 			<Tool
 				Name="VCWebServiceProxyGeneratorTool"
@@ -156,6 +143,31 @@
 	<References>
 	</References>
 	<Files>
+		<Filter
+			Name="src"
+			Filter=""
+			>
+			<File
+				RelativePath="..\..\src\staticlibs.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\loader.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\io.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\toc.c"
+				>
+			</File>
+			<File
+				RelativePath="..\..\src\enceladus.c"
+				>
+			</File>
+		</Filter>
 	</Files>
 	<Globals>
 	</Globals>

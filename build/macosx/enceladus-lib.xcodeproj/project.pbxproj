@@ -1,0 +1,233 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B4117AE2102044B20064E55 /* enceladus.c in Sources */ = {isa = PBXBuildFile; fileRef = 25C743820EF240A159B70831 /* enceladus.c */; };
+		27B6049737335D5B093935E0 /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 17213919727E0485154C244B /* io.c */; };
+		7E74434065910D6603E23F48 /* loader.c in Sources */ = {isa = PBXBuildFile; fileRef = 60C46519724719CA1D79220E /* loader.c */; };
+		04F00A903016776F0F154563 /* staticlibs.c in Sources */ = {isa = PBXBuildFile; fileRef = 15986F2356F7369A736F76FD /* staticlibs.c */; };
+		08CE74EB384C7B150EB555C6 /* toc.c in Sources */ = {isa = PBXBuildFile; fileRef = 1BBB36CB49FA52EE14275333 /* toc.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		25C743820EF240A159B70831 /* enceladus.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "enceladus.c"; path = "enceladus.c"; sourceTree = "<group>"; };
+		17213919727E0485154C244B /* io.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "io.c"; path = "io.c"; sourceTree = "<group>"; };
+		60C46519724719CA1D79220E /* loader.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "loader.c"; path = "loader.c"; sourceTree = "<group>"; };
+		15986F2356F7369A736F76FD /* staticlibs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "staticlibs.c"; path = "staticlibs.c"; sourceTree = "<group>"; };
+		1BBB36CB49FA52EE14275333 /* toc.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = "toc.c"; path = "toc.c"; sourceTree = "<group>"; };
+		714B34FB677C40CB4F975725 /* libenceladus-lib-dbg.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libenceladus-lib-dbg.a"; path = "libenceladus-lib-dbg.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		229B5A9A59015AE855B067B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6F4B12E735A404A27EAD0369 /* enceladus-lib */ = {
+			isa = PBXGroup;
+			children = (
+				5BDF3C66390538602FC764A9 /* src */,
+				1D240D29190702B51A901CE9 /* Products */,
+			);
+			name = "enceladus-lib";
+			sourceTree = "<group>";
+		};
+		5BDF3C66390538602FC764A9 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				25C743820EF240A159B70831 /* enceladus.c */,
+				17213919727E0485154C244B /* io.c */,
+				60C46519724719CA1D79220E /* loader.c */,
+				15986F2356F7369A736F76FD /* staticlibs.c */,
+				1BBB36CB49FA52EE14275333 /* toc.c */,
+			);
+			name = "src";
+			path = ../../src;
+			sourceTree = "<group>";
+		};
+		1D240D29190702B51A901CE9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				714B34FB677C40CB4F975725 /* libenceladus-lib-dbg.a */,
+			);
+			name = "Products";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1DCB05097B90762C2E766308 /* enceladus-lib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41FE30290C0D18F666C37F7C /* Build configuration list for PBXNativeTarget "enceladus-lib" */;
+			buildPhases = (
+				0FF46BB40A0C400B63231922 /* Resources */,
+				056E7EDE4FEE4F6851CC6415 /* Sources */,
+				229B5A9A59015AE855B067B6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "enceladus-lib";
+			productName = "enceladus-lib";
+			productReference = 714B34FB677C40CB4F975725 /* libenceladus-lib-dbg.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "enceladus-lib" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 6F4B12E735A404A27EAD0369 /* enceladus-lib */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1DCB05097B90762C2E766308 /* libenceladus-lib-dbg.a */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0FF46BB40A0C400B63231922 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		056E7EDE4FEE4F6851CC6415 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B4117AE2102044B20064E55 /* enceladus.c in Sources */,
+				27B6049737335D5B093935E0 /* io.c in Sources */,
+				7E74434065910D6603E23F48 /* loader.c in Sources */,
+				04F00A903016776F0F154563 /* staticlibs.c in Sources */,
+				08CE74EB384C7B150EB555C6 /* toc.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3DB9359C5C8073602BA46D67 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = ../../lib/macosx;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "enceladus-lib-dbg";
+			};
+			name = "Debug";
+		};
+		3DF718D0190A08572D5312D5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				CONFIGURATION_BUILD_DIR = ../../lib/macosx;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = "enceladus-lib";
+			};
+			name = "Release";
+		};
+		13BB2A481AD91634793E2AA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LUA_USE_MACOSX",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../src",
+					"../../src/lua",
+				);
+				OBJROOT = "obj/Debug/enceladus-lib";
+				ONLY_ACTIVE_ARCH = NO;
+				PREBINDING = NO;
+				SYMROOT = "../../lib/macosx";
+			};
+			name = "Debug";
+		};
+		191224286D635C3231CD2331 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CONFIGURATION_BUILD_DIR = "$(SYMROOT)";
+				CONFIGURATION_TEMP_DIR = "$(OBJROOT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LUA_USE_MACOSX",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"../../src",
+					"../../src/lua",
+				);
+				OBJROOT = "obj/Release/enceladus-lib";
+				ONLY_ACTIVE_ARCH = NO;
+				PREBINDING = NO;
+				SYMROOT = "../../lib/macosx";
+			};
+			name = "Release";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		41FE30290C0D18F666C37F7C /* Build configuration list for PBXNativeTarget "libenceladus-lib-dbg.a" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3DB9359C5C8073602BA46D67 /* Debug */,
+				3DF718D0190A08572D5312D5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug";
+		};
+		1DEB928908733DD80010E9CD /* Build configuration list for PBXProject "enceladus-lib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13BB2A481AD91634793E2AA0 /* Debug */,
+				191224286D635C3231CD2331 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = "Debug";
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

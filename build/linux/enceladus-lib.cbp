@@ -2,48 +2,54 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="enceladus" />
+		<Option title="enceladus-lib" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="../../bin/enceladus-dbg" prefix_auto="0" extension_auto="0" />
-				<Option object_output="obj/Debug/enceladus" />
-				<Option type="1" />
+				<Option output="../../lib/linux/libenceladus-lib-dbg.a" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Debug/enceladus-lib" />
+				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-DLUA_USE_LINUX" />
+					<Add directory="../../src" />
+					<Add directory="../../src/lua" />
 				</Compiler>
 				<Linker>
 					<Add option="-rdynamic" />
-					<Add directory="../../lib/linux" />
 					<Add library="dl" />
-					<Add library="enceladus-lib-dbg" />
-					<Add library="m" />
-					<Add library="Lua-5.1-dbg" />
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="../../bin/enceladus" prefix_auto="0" extension_auto="0" />
-				<Option object_output="obj/Release/enceladus" />
-				<Option type="1" />
+				<Option output="../../lib/linux/libenceladus-lib.a" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Release/enceladus-lib" />
+				<Option type="2" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-DLUA_USE_LINUX" />
+					<Add directory="../../src" />
+					<Add directory="../../src/lua" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 					<Add option="-rdynamic" />
-					<Add directory="../../lib/linux" />
 					<Add library="dl" />
-					<Add library="enceladus-lib" />
-					<Add library="m" />
-					<Add library="Lua-5.1" />
 				</Linker>
 			</Target>
 		</Build>
+		<Unit filename="../../src/staticlibs.c">
+		</Unit>
+		<Unit filename="../../src/loader.c">
+		</Unit>
+		<Unit filename="../../src/io.c">
+		</Unit>
+		<Unit filename="../../src/toc.c">
+		</Unit>
+		<Unit filename="../../src/enceladus.c">
+		</Unit>
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

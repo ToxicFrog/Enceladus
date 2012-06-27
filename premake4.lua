@@ -1,9 +1,11 @@
 solution "enceladus"
     configurations { "Debug", "Release" }
     location ("build/"..os.get())
+    targetdir "bin"
     
     configuration "Debug"
         flags "Symbols"
+        targetsuffix "-dbg"
     
     configuration "Release"
         flags "Optimize"
@@ -26,23 +28,43 @@ solution "enceladus"
 
     project "Lua-5.1"
         kind "StaticLib"
+        targetdir ("lib/"..os.get())
         language "C"
         files "src/lua/*.c"
         includedirs "src/lua"
-        
-        configuration "windows"
+    
+    if os.get() == "windows" then
+        project "Lua-5.1-dll"
             kind "SharedLib"
+            language "C"
+            files "src/lua/*.c"
+            includedirs "src/lua"
+            targetprefix ""
             targetname "lua5.1"
             targetextension ".dll"
-            implibprefix ""
+            implibdir ("lib/"..os.get())
             implibextension ".lib"
+    end
         
-    project "enceladus"
-        kind "ConsoleApp"
+    project "enceladus-lib"
+        kind "StaticLib"
+        targetdir ("lib/"..os.get())
         language "C"
         files "src/*.c"
         includedirs { "src", "src/lua" }
-        links { "m", "Lua-5.1" }
 
-        configuration { "windows", "gmake" }
-            linkoptions "../../lua5.1.dll"
+    project "enceladus"
+        kind "ConsoleApp"
+        language "C"
+        links { "enceladus-lib", "m", "Lua-5.1" }
+
+        configuration "windows"
+            targetname "enceladus-static"
+
+    if os.get() == "windows" then
+        project "enceladus-dll"
+            kind "ConsoleApp"
+            language "C"
+            links { "enceladus-lib", "m", "Lua-5.1-dll" }
+            targetname "enceladus"
+    end

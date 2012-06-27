@@ -20,18 +20,18 @@ ifndef AR
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = obj/Debug/enceladus
+  OBJDIR     = obj/Debug/enceladus-dll
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/enceladus-static-dbg.exe
+  TARGET     = $(TARGETDIR)/enceladus-dbg.exe
   DEFINES   += -D_WIN32 -DLUA_WIN
   INCLUDES  += 
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -L../../lib/windows
-  LIBS      += -lenceladus-lib-dbg -lm -lLua-5.1-dbg
+  LIBS      += -lenceladus-lib-dbg -lm -llua5.1-dbg
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += ../../lib/windows/libenceladus-lib-dbg.a ../../lib/windows/libLua-5.1-dbg.a
+  LDDEPS    += ../../lib/windows/libenceladus-lib-dbg.a ../../lib/windows/lua5.1-dbg.lib
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -42,18 +42,18 @@ ifeq ($(config),debug)
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = obj/Release/enceladus
+  OBJDIR     = obj/Release/enceladus-dll
   TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/enceladus-static.exe
+  TARGET     = $(TARGETDIR)/enceladus.exe
   DEFINES   += -D_WIN32 -DLUA_WIN
   INCLUDES  += 
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -s -L../../lib/windows
-  LIBS      += -lenceladus-lib -lm -lLua-5.1
+  LIBS      += -lenceladus-lib -lm -llua5.1
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += ../../lib/windows/libenceladus-lib.a ../../lib/windows/libLua-5.1.a
+  LDDEPS    += ../../lib/windows/libenceladus-lib.a ../../lib/windows/lua5.1.lib
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -81,7 +81,7 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES)
-	@echo Linking enceladus
+	@echo Linking enceladus-dll
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -102,7 +102,7 @@ else
 endif
 
 clean:
-	@echo Cleaning enceladus
+	@echo Cleaning enceladus-dll
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)

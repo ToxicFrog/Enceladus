@@ -2,8 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.10"
-	Name="Lua-5.1"
-	ProjectGUID="{194F7AEE-B96E-9F89-B424-A3D7E7870ADE}"
+	Name="Lua-5.1-dll"
+	ProjectGUID="{50840DFF-9627-2854-D3FF-545D35D57908}"
 	Keyword="Win32Proj"
 	>
 	<Platforms>
@@ -14,9 +14,9 @@
 	<Configurations>
 		<Configuration
 			Name="Debug|Win32"
-			OutputDirectory="..\..\lib\windows"
-			IntermediateDirectory="obj\Debug\Lua-5.1"
-			ConfigurationType="4"
+			OutputDirectory="..\..\bin"
+			IntermediateDirectory="obj\Debug\Lua-5.1-dll"
+			ConfigurationType="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -32,7 +32,7 @@
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				ProgramDataBaseFileName="$(OutDir)\Lua-5.1-dbg.pdb"
+				ProgramDataBaseFileName="$(OutDir)\lua5.1-dbg.pdb"
 				DebugInformationFormat="4"
 				CompileAs="1"
 			/>
@@ -40,8 +40,15 @@
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\Lua-5.1-dbg.lib"
+				Name="VCLinkerTool"
+				OutputFile="$(OutDir)\lua5.1-dbg.dll"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories=""
+				GenerateDebugInformation="TRUE"
+				ProgramDataBaseFileName="$(OutDir)\lua5.1-dbg.pdb"
+				SubSystem="2"
+				ImportLibrary="..\..\lib\windows\lua5.1-dbg.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCMIDLTool"
@@ -78,9 +85,9 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="..\..\lib\windows"
-			IntermediateDirectory="obj\Release\Lua-5.1"
-			ConfigurationType="4"
+			OutputDirectory="..\..\bin"
+			IntermediateDirectory="obj\Release\Lua-5.1-dll"
+			ConfigurationType="2"
 			CharacterSet="2"
 			>
 			<Tool
@@ -95,7 +102,7 @@
 				UsePrecompiledHeader="2"
 				WarningLevel="3"
 				Detect64BitPortabilityProblems="TRUE"
-				ProgramDataBaseFileName="$(OutDir)\Lua-5.1.pdb"
+				ProgramDataBaseFileName="$(OutDir)\lua5.1.pdb"
 				DebugInformationFormat="0"
 				CompileAs="1"
 			/>
@@ -103,8 +110,16 @@
 				Name="VCCustomBuildTool"
 			/>
 			<Tool
-				Name="VCLibrarianTool"
-				OutputFile="$(OutDir)\Lua-5.1.lib"
+				Name="VCLinkerTool"
+				OutputFile="$(OutDir)\lua5.1.dll"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				GenerateDebugInformation="FALSE"
+				SubSystem="2"
+				OptimizeReferences="2"
+				EnableCOMDATFolding="2"
+				ImportLibrary="..\..\lib\windows\lua5.1.lib"
+				TargetMachine="1"
 			/>
 			<Tool
 				Name="VCMIDLTool"

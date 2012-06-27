@@ -21,17 +21,17 @@ endif
 
 ifeq ($(config),debug)
   OBJDIR     = obj/Debug/enceladus
-  TARGETDIR  = ../..
-  TARGET     = $(TARGETDIR)/enceladus
+  TARGETDIR  = ../../bin
+  TARGET     = $(TARGETDIR)/enceladus-dbg
   DEFINES   += -DLUA_USE_MACOSX
-  INCLUDES  += -I../../src -I../../src/lua
+  INCLUDES  += 
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../..
-  LIBS      += -lm -lLua-5.1
+  LDFLAGS   += -L../../lib/macosx
+  LIBS      += -lenceladus-lib-dbg -lm -lLua-5.1-dbg
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += ../../libLua-5.1.a
+  LDDEPS    += ../../lib/macosx/libenceladus-lib-dbg.a ../../lib/macosx/libLua-5.1-dbg.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -43,17 +43,17 @@ endif
 
 ifeq ($(config),release)
   OBJDIR     = obj/Release/enceladus
-  TARGETDIR  = ../..
+  TARGETDIR  = ../../bin
   TARGET     = $(TARGETDIR)/enceladus
   DEFINES   += -DLUA_USE_MACOSX
-  INCLUDES  += -I../../src -I../../src/lua
+  INCLUDES  += 
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -Wl,-x -L../..
-  LIBS      += -lm -lLua-5.1
+  LDFLAGS   += -Wl,-x -L../../lib/macosx
+  LIBS      += -lenceladus-lib -lm -lLua-5.1
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += ../../libLua-5.1.a
+  LDDEPS    += ../../lib/macosx/libenceladus-lib.a ../../lib/macosx/libLua-5.1.a
   LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
@@ -64,11 +64,6 @@ ifeq ($(config),release)
 endif
 
 OBJECTS := \
-	$(OBJDIR)/staticlibs.o \
-	$(OBJDIR)/loader.o \
-	$(OBJDIR)/io.o \
-	$(OBJDIR)/toc.o \
-	$(OBJDIR)/enceladus.o \
 
 RESOURCES := \
 
@@ -129,20 +124,5 @@ $(GCH): $(PCH)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 endif
 
-$(OBJDIR)/staticlibs.o: ../../src/staticlibs.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/loader.o: ../../src/loader.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/io.o: ../../src/io.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/toc.o: ../../src/toc.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
-$(OBJDIR)/enceladus.o: ../../src/enceladus.c
-	@echo $(notdir $<)
-	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)

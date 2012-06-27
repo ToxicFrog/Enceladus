@@ -20,19 +20,19 @@ ifndef AR
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = obj/Debug/Lua-5.1
-  TARGETDIR  = ../../lib/linux
-  TARGET     = $(TARGETDIR)/libLua-5.1-dbg.a
-  DEFINES   += -DLUA_USE_LINUX
+  OBJDIR     = obj/Debug/Lua-5.1-dll
+  TARGETDIR  = ../../bin
+  TARGET     = $(TARGETDIR)/lua5.1-dbg.dll
+  DEFINES   += -D_WIN32 -DLUA_WIN
   INCLUDES  += -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -rdynamic
-  LIBS      += -ldl
+  LDFLAGS   += -shared -Wl,--out-implib="../../lib/windows/lua5.1-dbg.lib"
+  LIBS      += 
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
+  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -42,19 +42,19 @@ ifeq ($(config),debug)
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = obj/Release/Lua-5.1
-  TARGETDIR  = ../../lib/linux
-  TARGET     = $(TARGETDIR)/libLua-5.1.a
-  DEFINES   += -DLUA_USE_LINUX
+  OBJDIR     = obj/Release/Lua-5.1-dll
+  TARGETDIR  = ../../bin
+  TARGET     = $(TARGETDIR)/lua5.1.dll
+  DEFINES   += -D_WIN32 -DLUA_WIN
   INCLUDES  += -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -s -rdynamic
-  LIBS      += -ldl
+  LDFLAGS   += -s -shared -Wl,--out-implib="../../lib/windows/lua5.1.lib"
+  LIBS      += 
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
+  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -111,7 +111,7 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES)
-	@echo Linking Lua-5.1
+	@echo Linking Lua-5.1-dll
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -132,7 +132,7 @@ else
 endif
 
 clean:
-	@echo Cleaning Lua-5.1
+	@echo Cleaning Lua-5.1-dll
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)

@@ -20,19 +20,19 @@ ifndef AR
 endif
 
 ifeq ($(config),debug)
-  OBJDIR     = obj/Debug/enceladus
-  TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/enceladus-static-dbg.exe
-  DEFINES   += -D_WIN32 -DLUA_WIN
-  INCLUDES  += 
+  OBJDIR     = obj/Debug/enceladus-lib
+  TARGETDIR  = ../../lib/macosx
+  TARGET     = $(TARGETDIR)/libenceladus-lib-dbg.a
+  DEFINES   += -DLUA_USE_MACOSX
+  INCLUDES  += -I../../src -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L../../lib/windows
-  LIBS      += -lenceladus-lib-dbg -lm -lLua-5.1-dbg
+  LDFLAGS   += 
+  LIBS      += 
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += ../../lib/windows/libenceladus-lib-dbg.a ../../lib/windows/libLua-5.1-dbg.a
-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
+  LDDEPS    += 
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -42,19 +42,19 @@ ifeq ($(config),debug)
 endif
 
 ifeq ($(config),release)
-  OBJDIR     = obj/Release/enceladus
-  TARGETDIR  = ../../bin
-  TARGET     = $(TARGETDIR)/enceladus-static.exe
-  DEFINES   += -D_WIN32 -DLUA_WIN
-  INCLUDES  += 
+  OBJDIR     = obj/Release/enceladus-lib
+  TARGETDIR  = ../../lib/macosx
+  TARGET     = $(TARGETDIR)/libenceladus-lib.a
+  DEFINES   += -DLUA_USE_MACOSX
+  INCLUDES  += -I../../src -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -s -L../../lib/windows
-  LIBS      += -lenceladus-lib -lm -lLua-5.1
+  LDFLAGS   += -Wl,-x
+  LIBS      += 
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
-  LDDEPS    += ../../lib/windows/libenceladus-lib.a ../../lib/windows/libLua-5.1.a
-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
+  LDDEPS    += 
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -64,6 +64,11 @@ ifeq ($(config),release)
 endif
 
 OBJECTS := \
+	$(OBJDIR)/staticlibs.o \
+	$(OBJDIR)/loader.o \
+	$(OBJDIR)/io.o \
+	$(OBJDIR)/toc.o \
+	$(OBJDIR)/enceladus.o \
 
 RESOURCES := \
 
@@ -81,7 +86,7 @@ all: $(TARGETDIR) $(OBJDIR) prebuild prelink $(TARGET)
 	@:
 
 $(TARGET): $(GCH) $(OBJECTS) $(LDDEPS) $(RESOURCES)
-	@echo Linking enceladus
+	@echo Linking enceladus-lib
 	$(SILENT) $(LINKCMD)
 	$(POSTBUILDCMDS)
 
@@ -102,7 +107,7 @@ else
 endif
 
 clean:
-	@echo Cleaning enceladus
+	@echo Cleaning enceladus-lib
 ifeq (posix,$(SHELLTYPE))
 	$(SILENT) rm -f  $(TARGET)
 	$(SILENT) rm -rf $(OBJDIR)
@@ -124,5 +129,20 @@ $(GCH): $(PCH)
 	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 endif
 
+$(OBJDIR)/staticlibs.o: ../../src/staticlibs.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/loader.o: ../../src/loader.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/io.o: ../../src/io.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/toc.o: ../../src/toc.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/enceladus.o: ../../src/enceladus.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 
 -include $(OBJECTS:%.o=%.d)

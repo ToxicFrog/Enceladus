@@ -2,15 +2,17 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Lua-5.1" />
+		<Option title="Lua-5.1-dll" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="../../lib/windows/libLua-5.1-dbg.a" prefix_auto="0" extension_auto="0" />
-				<Option object_output="obj/Debug/Lua-5.1" />
-				<Option type="2" />
+				<Option output="../../bin/lua5.1-dbg.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Debug/Lua-5.1-dll" />
+				<Option type="3" />
 				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-D_WIN32" />
@@ -18,13 +20,17 @@
 					<Add directory="../../src/lua" />
 				</Compiler>
 				<Linker>
+					<Add option="-shared" />
+					<Add option="-Wl,--out-implib=&quot;../../lib/windows/lua5.1-dbg.lib&quot;" />
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="../../lib/windows/libLua-5.1.a" prefix_auto="0" extension_auto="0" />
-				<Option object_output="obj/Release/Lua-5.1" />
-				<Option type="2" />
+				<Option output="../../bin/lua5.1.dll" prefix_auto="0" extension_auto="0" />
+				<Option object_output="obj/Release/Lua-5.1-dll" />
+				<Option type="3" />
 				<Option compiler="gcc" />
+				<Option createDefFile="0" />
+				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
 					<Add option="-D_WIN32" />
@@ -33,6 +39,8 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add option="-shared" />
+					<Add option="-Wl,--out-implib=&quot;../../lib/windows/lua5.1.lib&quot;" />
 				</Linker>
 			</Target>
 		</Build>

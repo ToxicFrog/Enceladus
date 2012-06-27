@@ -21,18 +21,18 @@ endif
 
 ifeq ($(config),debug)
   OBJDIR     = obj/Debug/Lua-5.1
-  TARGETDIR  = ../..
-  TARGET     = $(TARGETDIR)/lua5.1.dll
+  TARGETDIR  = ../../lib/windows
+  TARGET     = $(TARGETDIR)/libLua-5.1-dbg.a
   DEFINES   += -D_WIN32 -DLUA_WIN
   INCLUDES  += -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -shared -Wl,--out-implib="../../lua5.1.lib"
+  LDFLAGS   += 
   LIBS      += 
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -43,18 +43,18 @@ endif
 
 ifeq ($(config),release)
   OBJDIR     = obj/Release/Lua-5.1
-  TARGETDIR  = ../..
-  TARGET     = $(TARGETDIR)/lua5.1.dll
+  TARGETDIR  = ../../lib/windows
+  TARGET     = $(TARGETDIR)/libLua-5.1.a
   DEFINES   += -D_WIN32 -DLUA_WIN
   INCLUDES  += -I../../src/lua
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -std=c99
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -s -shared -Wl,--out-implib="../../lua5.1.lib"
+  LDFLAGS   += -s
   LIBS      += 
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
-  LINKCMD    = $(CC) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
+  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
